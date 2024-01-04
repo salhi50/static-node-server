@@ -1,0 +1,6 @@
+{
+  "verbose": false,
+  "quiet": true,
+  "watch": ["server.js"],
+  "delay": 1000
+}
