@@ -17,7 +17,9 @@ const DEFAULT_HEADERS = {
   "Access-Control-Allow-Origin": "*",
   "Access-Control-Allow-Methods": "GET, HEAD",
   "X-Content-Type-Options": "nosniff",
-  "Vary": "Accept-Encoding"
+  "Vary": "Accept-Encoding",
+  "X-Server-Created-By": "Mohammed Ali Essalihi",
+  "X-Github": "https://github.com/salhi50"
 }
 
 const server = http.createServer((req, res) => {
