@@ -93,17 +93,15 @@ function sendError(req, res, status = 500, message = "") {
 
 async function fetchFile(pathname) {
   let filepath = path.join(ROOT_FOLDER, pathname);
-  let fileHandle = await fs.promises.open(filepath, 'r');
-  let stat = await fileHandle.stat();
+  let stat = await fs.promises.stat(filepath);
 
   if(stat.isDirectory()) {
-    await fileHandle.close();
     filepath = path.join(filepath, DEFAULT_INDEX);
-    fileHandle = await fs.promises.open(filepath, 'r');
-    stat = await fileHandle.stat();
-    await fileHandle.close();
+    stat = await fs.promises.stat(filepath);
   }
 
+  await fs.promises.access(filepath, fs.constants.R_OK);
+  
   return {filepath, stat};
 }
 
